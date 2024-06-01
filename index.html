@@ -15,6 +15,7 @@
             --white: #ffffff;
             --grey-light: #f0f0f0;
             --grey-dark: #333333;
+            --yellow-background: #FFF3AF;
             --transition-duration: 0.3s;
         }
 
@@ -22,23 +23,22 @@
             margin: 3%;
             padding-left: 5%;
             padding-right: 5%;
-            background-color: var(--white);
+            background-color: var(--yellow-background);
             color: var(--black);
             display: flex;
             justify-content: center;
             align-items: center;
             height: 85vh;
             text-align: center;
-            background-color: #FFF3AF;
         }
 
         h1 {
             font-family: "museo-sans-rounded", sans-serif;
             font-weight: 1000;
             font-style: normal;
-            -webkit-text-stroke: 1.25vw #ED1C24; /* For WebKit-based browsers */
-            text-stroke: 1vw #ED1C24; /* Standard syntax */
-            color: #ED1C24; /* Makes the fill color transparent */
+            -webkit-text-stroke: 1.25vw var(--red-primary); /* For WebKit-based browsers */
+            text-stroke: 1vw var(--red-primary); /* Standard syntax */
+            color: var(--red-primary); /* Makes the fill color transparent */
             letter-spacing: 0.75vw;
             font-size: 18vw;
             margin: 0;
@@ -58,7 +58,7 @@
             font-family: "museo-sans-rounded", sans-serif;
             font-weight: 1000;
             font-size: 6vw;
-            color: #ED1C24;
+            color: var(--red-primary);
             margin: 0 0 20px 0;
             text-transform: lowercase;
         }
@@ -67,7 +67,7 @@
             font-family: "museo-sans-rounded", sans-serif;
             font-weight: 800;
             font-size: 3vw;
-            color: #ED1C24;
+            color: var(--red-primary);
             margin: 0 0 40px 0;
             text-transform: lowercase;
         }
@@ -76,8 +76,8 @@
             font-family: "museo-sans-rounded", sans-serif;
             font-weight: 800;
             background-color: var(--red-primary);
-            color: #FFF3AF;
-            border: #ED1C24 2px solid;
+            color: var(--yellow-background);
+            border: var(--red-primary) 2px solid;
             border: none;
             padding: 10px 20px;
             border-radius: 8px;
@@ -90,9 +90,82 @@
         }
 
         button:hover {
-            background-color: #FFF3AF ;
+            background-color: var(--yellow-background);
             color: var(--red-primary);
-            border: #ED1C24 2px solid;
+            border: var(--red-primary) 2px solid;
+        }
+
+        .popup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 80%;
+            max-width: 500px;
+            background-color: var(--red-primary);
+            border: 2px solid var(--yellow-background);
+            padding: 20px;
+            border-radius: 10px;
+            z-index: 1000;
+        }
+
+        .popup.active {
+            display: block;
+        }
+
+        .popup h2 {
+            font-family: "museo-sans-rounded", sans-serif;
+            font-weight: 1000;
+            font-size: 1.5em;
+            color: var(--yellow-background);
+            text-transform: lowercase;
+            margin-bottom: 10px;
+        }
+
+        .popup input, .popup textarea {
+            width: 90%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid var(--grey-dark);
+            border-radius: 5px;
+            font-family: "museo-sans-rounded", sans-serif;
+            font-weight: 400;
+            font-size: 1em;
+        }
+        
+        .popup textarea {
+            height: fit-content;
+            padding: 10px;
+            resize: vertical;
+        }
+
+        .popup button {
+            width: 100%;
+            padding: 10px;
+            margin-top: 10px;
+            background-color: var(--yellow-background);
+            color: var(--red-primary);
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .popup button:hover {
+            background-color: var(--red-primary);
+            color: var(--yellow-background);
+            border: var(--yellow-background) 2px solid;
+        }
+
+        .popup-close {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            cursor: pointer;
+            font-family: "museo-sans-rounded", sans-serif;
+            font-weight: 1000;
+            font-size: 1.5em;
+            color: var(--yellow-background);
         }
     </style>
 </head>
@@ -104,10 +177,49 @@
             <h2>deciding what to eat is hard, ketchup makes it easy!</h2>
             <h3>discover, review, and organize restaurants and recipes all in one social app, because food is better when you share it with friends!</h3>
         </main>
-        <button>join our network of restaurants!</button>
+        <button id="join-button">join our network of restaurants!</button>
         <br>
         <button>download app (coming soon)</button>
     </div>
+
+    <div class="popup" id="popup">
+        <span class="popup-close" id="popup-close">&times;</span>
+        <h2>Join Our Network</h2>
+        <form id="contact-form">
+            <input type="email" id="email" name="email" placeholder="Your email" required>
+            <textarea id="message" name="message" rows="6" placeholder="Your message" required>Hello Ketchup Team,
+            
+I am [Name] from [Restaurant Name], and I am interested in joining Ketchup's network of restaurants!
+
+Looking forward to your response.
+
+Best regards,
+[Name]</textarea>
+            <button type="submit">Send</button>
+        </form>
+    </div>
+
+    <script>
+        const joinButton = document.getElementById('join-button');
+        const popup = document.getElementById('popup');
+        const popupClose = document.getElementById('popup-close');
+
+        joinButton.addEventListener('click', () => {
+            popup.classList.add('active');
+        });
+
+        popupClose.addEventListener('click', () => {
+            popup.classList.remove('active');
+        });
+
+        document.getElementById('contact-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const email = document.getElementById('email').value;
+            const message = document.getElementById('message').value;
+            window.location.href = `mailto:hello@ketchup-app.com?subject=Join Our Network&body=Email: ${email}%0D%0AMessage: ${message}`;
+            popup.classList.remove('active');
+        });
+    </script>
 
 </body>
 </html>
