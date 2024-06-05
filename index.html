@@ -176,31 +176,100 @@
         .feature-content {
             max-width: 50%;
         }
+
         footer {
-    background-color: var(--red-primary) ;
-    color: var(--white); /* Light grey background */
-    padding: 20px 0;
-    text-align: center;
-    font-size: .75em; /* Relative size */
-    margin-top: 50px;
-}
+            background-color: var(--red-primary) ;
+            color: var(--white); /* Light grey background */
+            padding: 20px 0;
+            text-align: center;
+            font-size: .75em; /* Relative size */
+            margin-top: 50px;
+        }
 
-footer p {
-    margin: 0;
-    font-family: "museo-sans-rounded", sans-serif;
+        footer p {
+            margin: 0;
+            font-family: "museo-sans-rounded", sans-serif;
             font-weight: 800;
-}
+        }
 
+        /* Media Query for Mobile Devices */
+        @media only screen and (max-width: 600px) {
+            header h1 {
+                font-size: 3em; /* Reduce font size for mobile */
+            }
+
+            nav {
+                display: flex;
+                justify-content: center;
+                margin-top: 20px;
+            }
+
+            nav a {
+                display: none; /* Hide individual navigation links */
+            }
+
+            .menu-stack {
+                display: inline-block;
+                position: relative;
+            }
+
+            .menu-stack .menu-btn {
+                background-color: var(--red-primary);
+                color: var(--white);
+                border: none;
+                border-radius: 5px;
+                padding: 10px 20px;
+                font-size: 1em;
+                cursor: pointer;
+            }
+
+            .menu-stack .menu-content {
+                display: none;
+                position: absolute;
+                background-color: var(--white);
+                min-width: 160px;
+                box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+                z-index: 1;
+            }
+
+            .menu-stack .menu-content a {
+                color: var(--black);
+                padding: 12px 16px;
+                text-decoration: none;
+                display: block;
+            }
+
+            .menu-stack:hover .menu-content {
+                display: block;
+            }
+        }
+
+        @media only screen and (min-width: 601px) {
+            nav a {
+                display: inline-block; /* Display navigation links inline for wider screens */
+            }
+
+            .menu-stack {
+                display: none; /* Hide menu button for wider screens */
+            }
+        }
     </style>
 </head>
 <body>
     <header>
         <h1>KETCHUP</h1>
         <nav>
-            <a href="#">Home</a> |
-            <a href="#">Meet the Team</a> |
-            <a href="#">About</a> |
-            <a href="#">Download Ketchup (Coming Soon)</a>
+            <div class="menu-stack">
+                <button class="menu-btn">Menu &#9776;</button>
+                <div class="menu-content">
+                    <a href="#">Home</a>
+                    <a href="#">Meet the Team</a>
+                    <a href="#">About</a>
+                </div>
+            </div>
+            <a href="#">Home </a>
+            <a href="#">Meet the Team</a>
+            <a href="#">About</a>
         </nav>
     </header>
     <main>
@@ -222,21 +291,30 @@ footer p {
                     <img src="img/photo5.jpeg" alt="Discover">
                     <div class="feature-content">
                         <h3>Discover</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                        <p>
+                            Discover new restaurants around you with recommendations from friends, making it easier than ever to find exciting dining spots in your area.                 </p>
                     </div>
                 </div>
                 <div class="feature">
                     <img src="img/photo2.jpeg" alt="Share">
                     <div class="feature-content">
                         <h3>Share</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                        <p>
+                            Share your favorite dining spots with friends and people nearby, making it easy for everyone to discover new places to eat together. Let's explore together!
+
+
+
+
+
+                        </p>
                     </div>
                 </div>
                 <div class="feature">
                     <img src="img/photo4.jpeg" alt="Organize">
                     <div class="feature-content">
                         <h3>Organize</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                        <p>
+                            Easily organize your favorite restaurants and recipes in one convenient place, simplifying meal planning and dining out decisions.                        </p>
                     </div>
                 </div>
             </div>
@@ -245,6 +323,5 @@ footer p {
     <footer>
         <p>&copy; 2024 Let's Ketchup LLC. All rights reserved.</p>
     </footer>
-    
 </body>
 </html>
