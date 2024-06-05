@@ -3,11 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>join ketchup!</title>
-    <!-- Fonts -->
+    <title>Ketchup</title>
     <link href="https://fonts.googleapis.com/css2?family=Neue+Haas+Grotesk:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://use.typekit.net/zzo8ozp.css">
-    <!-- Styles -->
     <style>
         :root {
             --red-primary: #ED1C24; /* Pure red */
@@ -18,245 +16,219 @@
             --yellow-background: #FFF3AF;
             --transition-duration: 0.3s;
         }
-
         body {
-            margin: 3%;
-            padding-left: 5%;
-            padding-right: 5%;
-            background-color: var(--yellow-background);
-            color: var(--black);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 85vh;
+            font-family: "museo-sans-rounded", sans-serif;
+            margin: 0;
             text-align: center;
+            background-color: #ffffff;
+            font-size: calc(1vw + 1vh + 0.5vmin); /* Scales relative to viewport */
         }
 
-        h1 {
+        header {
+            background-color: #ffffff;
+            padding: 20px;
+        }
+
+        header h1 {
             font-family: "museo-sans-rounded", sans-serif;
             font-weight: 1000;
             font-style: normal;
-            -webkit-text-stroke: 1.25vw var(--red-primary); /* For WebKit-based browsers */
-            text-stroke: 1vw var(--red-primary); /* Standard syntax */
+            -webkit-text-stroke: 0.07em var(--red-primary); /* For WebKit-based browsers */
+            text-stroke: 0.1em var(--red-primary); /* Standard syntax */
             color: var(--red-primary); /* Makes the fill color transparent */
-            letter-spacing: 0.75vw;
-            font-size: 18vw;
+            letter-spacing: 0.1em;
+            font-size: 5em; /* Relative size */
             margin: 0;
             padding: 20px 0;
         }
 
-        main {
-            font-family: "museo-sans-rounded", sans-serif;
-            font-weight: 1000;
-            text-align: center;
-            border-radius: 10px;
-            padding: 2%;
-            text-transform: lowercase;
+        nav {
+            margin-top: 10px;
         }
 
-        main h2 {
-            font-family: "museo-sans-rounded", sans-serif;
-            font-weight: 1000;
-            font-size: 6vw;
+        nav a {
+            color: #333;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 1em; /* Relative size */
+        }
+
+        nav a:hover {
             color: var(--red-primary);
-            margin: 0 0 20px 0;
-            text-transform: lowercase;
         }
 
-        main h3 {
-            font-family: "museo-sans-rounded", sans-serif;
-            font-weight: 800;
-            font-size: 3vw;
-            color: var(--red-primary);
-            margin: 0 0 40px 0;
-            text-transform: lowercase;
+        .intro {
+            padding: 5%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
-        button {
-            font-family: "museo-sans-rounded", sans-serif;
-            font-weight: 800;
-            background-color: var(--red-primary);
-            color: var(--yellow-background);
-            border: var(--red-primary) 2px solid;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 8px;
-            font-size: 1em;
-            letter-spacing: 2px;
-            cursor: pointer;
-            transition: background-color 0.3s, color 0.3s;
-            margin: 20px 0;
-            text-transform: lowercase;
-        }
-
-        button:hover {
-            background-color: var(--yellow-background);
-            color: var(--red-primary);
-            border: var(--red-primary) 2px solid;
-        }
-
-        .popup {
-            display: none;
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 80%;
-            max-width: 500px;
-            background-color: var(--red-primary);
-            border: 2px solid var(--yellow-background);
+        .intro-text {
+            flex: 1;
             padding: 20px;
-            border-radius: 10px;
-            z-index: 1000;
+            text-align: center;
         }
 
-        .popup.active {
-            display: block;
-        }
-
-        .popup h2 {
+        .intro h2 {
             font-family: "museo-sans-rounded", sans-serif;
             font-weight: 1000;
-            font-size: 1.5em;
-            color: var(--yellow-background);
-            text-transform: lowercase;
+            font-size: 2.5em; /* Relative size */
             margin-bottom: 10px;
         }
 
-        .popup input, .popup textarea {
-            width: 90%;
-            padding: 10px;
-            margin: 10px 0;
-            border: 1px solid var(--grey-dark);
-            border-radius: 5px;
+        .intro h6 {
+            font-size: 1.2em; /* Relative size */
             font-family: "museo-sans-rounded", sans-serif;
-            font-weight: 400;
-            font-size: 1em;
-        }
-        
-        .popup textarea {
-            height: calc(11em); 
-            padding: 10px;
-            resize: vertical;
+            font-weight: 500;
         }
 
-        .popup button {
-            width: 100%;
-            padding: 10px;
-            margin-top: 10px;
-            background-color: var(--yellow-background);
-            color: var(--red-primary);
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-
-        .popup button:hover {
+        .intro button {
             background-color: var(--red-primary);
-            color: var(--yellow-background);
-            border: var(--yellow-background) 2px solid;
+            color: var(--white);
+            border: 1px solid var(--red-primary);
+            border-radius: 5px;
+            padding: 0.5em 1em; /* Relative size */
+            font-size: 1em; /* Relative size */
+            cursor: pointer;
+            margin-top: 10px;
         }
 
-        .popup-close {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            cursor: pointer;
+        .intro p {
+            font-size: 1.5em; /* Relative size */
+            font-family: "museo-sans-rounded", sans-serif;
+            font-weight: 600;
+        }
+
+        .intro h5 {
+            font-size: 1.2em; /* Relative size */
+            font-family: "museo-sans-rounded", sans-serif;
+            font-weight: 700;
+            margin: 0;
+        }
+
+        .app-store-button img {
+            width: 150px;
+        }
+
+        .intro-image {
+            flex: 1;
+            padding: 20px;
+        }
+
+        .intro-image img {
+            width: 100%;
+            max-width: 300px;
+            height: auto;
+        }
+
+        .welcome {
+            margin-top: 100px;
+            padding: 0 10%;
+        }
+
+        .welcome h2 {
+            font-size: 2.5em; /* Relative size */
+            margin-bottom: 50px;
             font-family: "museo-sans-rounded", sans-serif;
             font-weight: 1000;
-            font-size: 1.5em;
-            color: var(--yellow-background);
+        }
+
+        .features {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 50px;
+        }
+
+        .feature {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+        }
+
+        .feature:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+
+        .feature img {
+            width: 300px;
+            height: auto;
+        }
+
+        .feature h3 {
+            font-size: 1.5em; /* Relative size */
+            font-family: "museo-sans-rounded", sans-serif;
+            font-weight: 800;
+
+        }
+
+        .feature p {
+            text-align: center;
+            font-size: 1em; /* Relative size */
+            line-height: 1.5;
+            padding: 2%;
+            font-weight: 500;
+
+        }
+
+        .feature-content {
+            max-width: 50%;
         }
     </style>
 </head>
 <body>
-
-    <div>
+    <header>
         <h1>KETCHUP</h1>
-        <main>
-            <h2>deciding what to eat is hard, ketchup makes it easy!</h2>
-            <h3>discover, review, and organize restaurants and recipes all in one social app, because food is better when you share it with friends!</h3>
-        </main>
-        <button id="join-button">join our network of restaurants!</button>
-        <br>
-        <button id="beta-button">become a beta tester!</button>
-        <br>
-    </div>
-
-    <div class="popup" id="popup-join">
-        <span class="popup-close" id="popup-join-close">&times;</span>
-        <h2>Join Our Network</h2>
-        <form id="contact-form-join">
-            <input type="email" id="email-join" name="email" placeholder="Your email" required>
-            <textarea id="message-join" name="message" rows="6" placeholder="Your message" required>Hello Ketchup Team,
-            
-I am [Name] from [Restaurant Name], and I am interested in joining Ketchup's network of restaurants!
-
-Looking forward to your response.
-
-Best regards,
-[Name]</textarea>
-            <button type="submit">Send</button>
-        </form>
-    </div>
-
-    <div class="popup" id="popup-beta">
-        <span class="popup-close" id="popup-beta-close">&times;</span>
-        <h2>Become a Beta Tester</h2>
-        <form id="contact-form-beta">
-            <input type="email" id="email-beta" name="email" placeholder="Your email" required>
-            <textarea id="message-beta" name="message" rows="6" placeholder="Your message" required>Hello Ketchup Team,
-            
-I am [Name], and I am interested in becoming a beta tester for Ketchup!
-
-Looking forward to your response.
-
-Best regards,
-[Name]</textarea>
-            <button type="submit">Send</button>
-        </form>
-    </div>
-
-    <script>
-        const joinButton = document.getElementById('join-button');
-        const betaButton = document.getElementById('beta-button');
-        const popupJoin = document.getElementById('popup-join');
-        const popupBeta = document.getElementById('popup-beta');
-        const popupJoinClose = document.getElementById('popup-join-close');
-        const popupBetaClose = document.getElementById('popup-beta-close');
-
-        joinButton.addEventListener('click', () => {
-            popupJoin.classList.add('active');
-        });
-
-        betaButton.addEventListener('click', () => {
-            popupBeta.classList.add('active');
-        });
-
-        popupJoinClose.addEventListener('click', () => {
-            popupJoin.classList.remove('active');
-        });
-
-        popupBetaClose.addEventListener('click', () => {
-            popupBeta.classList.remove('active');
-        });
-
-        document.getElementById('contact-form-join').addEventListener('submit', function(event) {
-            event.preventDefault();
-            const emailJoin = document.getElementById('email-join').value;
-            const messageJoin = document.getElementById('message-join').value;
-            window.location.href = `mailto:hello@ketchup-app.com?subject=Join Our Network&body=Email: ${emailJoin}%0D%0AMessage: ${messageJoin}`;
-            popupJoin.classList.remove('active');
-        });
-
-        document.getElementById('contact-form-beta').addEventListener('submit', function(event) {
-            event.preventDefault();
-            const emailBeta = document.getElementById('email-beta').value;
-            const messageBeta = document.getElementById('message-beta').value;
-            window.location.href = `mailto:hello@ketchup-app.com?subject=Become a Beta Tester&body=Email: ${emailBeta}%0D%0AMessage: ${messageBeta}`;
-            popupBeta.classList.remove('active');
-        });
-    </script>
-
+        <nav>
+            <a href="#">Home</a> |
+            <a href="#">Meet the Team</a> |
+            <a href="#">About</a> |
+            <a href="#">Download Ketchup (Coming Soon)</a>
+        </nav>
+    </header>
+    <main>
+        <section class="intro">
+            <div class="intro-text">
+                <h2>Let's Ketchup!</h2>
+                <p><em>Discover</em>, <em>organize</em> and <em>share</em> restaurants and recipes <span style="color: var(--red-primary);"><em>with friends!</em></span></p>
+                <h6>Coming soon to the App Store!</h6>
+                <button><h5>Join the Waitlist</h5></button>
+            </div>
+            <div class="intro-image">
+                <img src="img/photo1.jpeg" alt="App Screenshot">
+            </div>
+        </section>
+        <section class="welcome">
+            <h2>Welcome to Ketchup!</h2>
+            <div class="features">
+                <div class="feature">
+                    <img src="img/photo5.jpeg" alt="Discover">
+                    <div class="feature-content">
+                        <h3>Discover</h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                    </div>
+                </div>
+                <div class="feature">
+                    <img src="img/photo2.jpeg" alt="Share">
+                    <div class="feature-content">
+                        <h3>Share</h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                    </div>
+                </div>
+                <div class="feature">
+                    <img src="img/photo4.jpeg" alt="Organize">
+                    <div class="feature-content">
+                        <h3>Organize</h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer>
+        
+    </footer>
 </body>
 </html>
