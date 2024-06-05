@@ -361,6 +361,25 @@
             font-size: 1.5em;
             color: var(--white);
         }
+        @media only screen and (max-width: 700px) {
+    .intro {
+        flex-direction: column; /* Change flex direction to column for smaller screens */
+        align-items: center; /* Center-align content */
+    }
+
+    .intro-text {
+        width: 90%; /* Adjust width of text content */
+        margin-bottom: 20px; /* Add some spacing between text and image */
+    }
+
+    .intro-image {
+        width: 90%; /* Adjust width of image */
+    }
+}
+hr{
+    margin-left: 5%;
+    margin-right: 5%;
+}
     </style>
 </head>
 <body>
@@ -391,7 +410,9 @@
             <div class="intro-image">
                 <img src="img/photo1.jpeg" alt="App Screenshot">
             </div>
+    
         </section>
+        <hr>
         <section class="welcome">
             <h2>Welcome to Ketchup!</h2>
             <div class="features">
