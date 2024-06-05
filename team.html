@@ -77,21 +77,6 @@
             margin-bottom: 10px;
         }
 
-        @media only screen and (max-width: 700px) {
-            .feature {
-                flex-direction: column; /* Change flex direction to column for smaller screens */
-                text-align: center; /* Center-align content */
-            }
-
-            .feature img {
-                margin-bottom: 20px; /* Add some spacing between image and text */
-            }
-
-            .feature-content {
-                max-width: 100%; /* Adjust width of feature content */
-            }
-        }
-
         .intro h6 {
             font-size: 1.2em; /* Relative size */
             font-family: "museo-sans-rounded", sans-serif;
@@ -312,21 +297,6 @@
             font-weight: 400;
             font-size: 1em;
         }
-        @media only screen and (max-width: 700px) {
-    .feature:nth-child(2) { /* Targeting the second feature section, which is the "Share" section */
-        flex-direction: column; /* Change flex direction to column for smaller screens */
-    }
-
-    .feature:nth-child(2) img {
-        margin-bottom: 20px; /* Add some spacing between image and text */
-    }
-
-    .feature:nth-child(2) .feature-content {
-        max-width: 50%; /* Adjust width of feature content to match other sections */
-        margin: 0 auto; /* Center-align content */
-    }
-}
-
 
         #popup-waitlist textarea {
             height: calc(11em);
@@ -361,25 +331,50 @@
             font-size: 1.5em;
             color: var(--white);
         }
+
+        hr {
+            margin-left: 5%;
+            margin-right: 5%;
+        }
+
+        /* Team section */
+        .team {
+            margin-top: 50px;
+        }
+
+        .team h2 {
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+
+        .team-members {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+
+        .team-member {
+            text-align: center;
+            width: 30%;
+            margin-bottom: 30px;
+        }
+
+        .team-member img {
+            border-radius: 50%;
+            width: 150px;
+            height: 150px;
+        }
+
         @media only screen and (max-width: 700px) {
-    .intro {
-        flex-direction: column; /* Change flex direction to column for smaller screens */
-        align-items: center; /* Center-align content */
-    }
+            .team-members {
+                flex-direction: column;
+                align-items: center;
+            }
 
-    .intro-text {
-        width: 90%; /* Adjust width of text content */
-        margin-bottom: 20px; /* Add some spacing between text and image */
-    }
-
-    .intro-image {
-        width: 90%; /* Adjust width of image */
-    }
-}
-hr{
-    margin-left: 5%;
-    margin-right: 5%;
-}
+            .team-member {
+                width: 100%;
+            }
+        }
     </style>
 </head>
 <body>
@@ -400,13 +395,29 @@ hr{
         </nav>
     </header>
     <main>
-        <div class="intro">
-            <div class="intro-text">
-                <h2>About Our App</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed quis diam nec magna fermentum rhoncus. Nam vehicula quam nec nibh laoreet, vel tempor justo viverra. Fusce vitae velit et ligula tincidunt congue. Nulla facilisi.</p>
-                <p>Donec quis ex nec elit convallis gravida. Nam pulvinar sagittis dui, ut condimentum mauris ultricies eu. Fusce semper purus in nisi accumsan, id tristique nunc pellentesque. Maecenas vitae dapibus justo.</p>
+        <section class="team">
+            <h2>Our Team</h2>
+            <br>
+            <div class="team-members">
+                <div class="team-member">
+                    <img src="img/Jack.jpeg" alt="Team Member 1">
+                    <h3>Jack Robinson</h3>
+                    <p>Position: CEO</p>
+                </div>
+                <div class="team-member">
+                    <img src="img/Joe.jpeg" alt="Team Member 2">
+                    <h3>Joe Ciminelli </h3>
+                    <p>Position: CTO</p>
+                </div>
+                <div class="team-member">
+                    <img src="img/Kelsey.jpeg" alt="Team Member 3">
+                    <h3>Kelsey Dubinsky</h3>
+                    <p>Position: COO</p>
+                </div>
+               
+                </div>
             </div>
-            
-        </div>
+        </section>
     </main>
-    
+</body>
+</html>
