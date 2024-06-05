@@ -77,6 +77,21 @@
             margin-bottom: 10px;
         }
 
+        @media only screen and (max-width: 700px) {
+            .feature {
+                flex-direction: column; /* Change flex direction to column for smaller screens */
+                text-align: center; /* Center-align content */
+            }
+
+            .feature img {
+                margin-bottom: 20px; /* Add some spacing between image and text */
+            }
+
+            .feature-content {
+                max-width: 100%; /* Adjust width of feature content */
+            }
+        }
+
         .intro h6 {
             font-size: 1.2em; /* Relative size */
             font-family: "museo-sans-rounded", sans-serif;
@@ -253,6 +268,99 @@
                 display: none; /* Hide menu button for wider screens */
             }
         }
+        .menu-content a:hover{
+            background-color: var(--red-primary);
+            color: var(--white);
+        }
+
+        #popup-waitlist {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 80%;
+            max-width: 500px;
+            background-color: var(--red-primary);
+            border: 2px solid var(--white);
+            padding: 20px;
+            border-radius: 10px;
+            z-index: 1000;
+        }
+
+        #popup-waitlist.active {
+            display: block;
+        }
+
+        #popup-waitlist h2 {
+            font-family: "museo-sans-rounded", sans-serif;
+            font-weight: 1000;
+            font-size: 1.5em;
+            color: var(--white);
+            text-transform: lowercase;
+            margin-bottom: 10px;
+        }
+
+        #popup-waitlist input,
+        #popup-waitlist textarea {
+            width: 90%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid var(--grey-dark);
+            border-radius: 5px;
+            font-family: "museo-sans-rounded", sans-serif;
+            font-weight: 400;
+            font-size: 1em;
+        }
+        @media only screen and (max-width: 700px) {
+    .feature:nth-child(2) { /* Targeting the second feature section, which is the "Share" section */
+        flex-direction: column; /* Change flex direction to column for smaller screens */
+    }
+
+    .feature:nth-child(2) img {
+        margin-bottom: 20px; /* Add some spacing between image and text */
+    }
+
+    .feature:nth-child(2) .feature-content {
+        max-width: 50%; /* Adjust width of feature content to match other sections */
+        margin: 0 auto; /* Center-align content */
+    }
+}
+
+
+        #popup-waitlist textarea {
+            height: calc(11em);
+            padding: 10px;
+            resize: vertical;
+        }
+
+        #popup-waitlist button {
+            width: 100%;
+            padding: 10px;
+            margin-top: 10px;
+            background-color: var(--white);
+            color: var(--red-primary);
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        #popup-waitlist button:hover {
+            background-color: var(--red-primary);
+            color: var(--white);
+            border: var(--white) 2px solid;
+        }
+
+        .popup-close {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            cursor: pointer;
+            font-family: "museo-sans-rounded", sans-serif;
+            font-weight: 1000;
+            font-size: 1.5em;
+            color: var(--white);
+        }
     </style>
 </head>
 <body>
@@ -278,7 +386,7 @@
                 <h2>Let's Ketchup!</h2>
                 <p><em>Discover</em>, <em>organize</em> and <em>share</em> restaurants and recipes <span style="color: var(--red-primary);"><em>with friends!</em></span></p>
                 <h6>Coming soon to the App Store!</h6>
-                <button><h5>Join the Waitlist</h5></button>
+                <button id="waitlist-button"><h5>Join the Waitlist</h5></button>
             </div>
             <div class="intro-image">
                 <img src="img/photo1.jpeg" alt="App Screenshot">
@@ -302,15 +410,11 @@
                         <p>
                             Share your favorite dining spots with friends and people nearby, making it easy for everyone to discover new places to eat together. Let's explore together!
 
-
-
-
-
                         </p>
                     </div>
                 </div>
                 <div class="feature">
-                    <img src="img/photo4.jpeg" alt="Organize">
+                    <img src="img/photo7.jpeg" alt="Organize">
                     <div class="feature-content">
                         <h3>Organize</h3>
                         <p>
@@ -323,5 +427,44 @@
     <footer>
         <p>&copy; 2024 Let's Ketchup LLC. All rights reserved.</p>
     </footer>
+    
+    <!-- Waitlist Popup -->
+    <div class="popup" id="popup-waitlist">
+        <span class="popup-close" id="popup-waitlist-close">&times;</span>
+        <h2>Join the Waitlist</h2>
+        <form id="contact-form-waitlist">
+            <input type="email" id="email-waitlist" name="email" placeholder="Your email" required>
+            <textarea id="message-waitlist" name="message" rows="6" placeholder="Your message" required>Hello Ketchup Team,
+            
+I am [Name], and I am interested in joining the waitlist for Ketchup!
+
+Looking forward to your response.
+
+Best regards,
+[Name]</textarea>
+            <button type="submit">Send</button>
+        </form>
+    </div>
 </body>
 </html>
+
+<script>
+    const waitlistButton = document.getElementById('waitlist-button');
+    const popupWaitlist = document.getElementById('popup-waitlist');
+    const popupWaitlistClose = document.getElementById('popup-waitlist-close');
+
+    waitlistButton.addEventListener('click', () => {
+        popupWaitlist.classList.add('active');
+    });
+
+    popupWaitlistClose.addEventListener('click', () => {
+        popupWaitlist.classList.remove('active');
+    });
+
+    // Close popup when clicking outside the popup
+    window.addEventListener('click', (e) => {
+        if (e.target === popupWaitlist) {
+            popupWaitlist.classList.remove('active');
+        }
+    });
+</script>
