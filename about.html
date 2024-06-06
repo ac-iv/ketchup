@@ -199,15 +199,16 @@
         }
 
         footer {
-    position: fixed;
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    background-color: var(--red-primary);
-    color: var(--white);
-    padding: 20px 0;
-    text-align: center;
-    font-size: .75em;}
+            position: fixed;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            background-color: var(--red-primary);
+            color: var(--white);
+            padding: 20px 0;
+            text-align: center;
+            font-size: .75em;
+        }
 
         footer p {
             margin: 0;
@@ -321,20 +322,19 @@
             font-size: 1em;
         }
         @media only screen and (max-width: 700px) {
-    .feature:nth-child(2) { /* Targeting the second feature section, which is the "Share" section */
-        flex-direction: column; /* Change flex direction to column for smaller screens */
-    }
+            .feature:nth-child(2) { /* Targeting the second feature section, which is the "Share" section */
+                flex-direction: column; /* Change flex direction to column for smaller screens */
+            }
 
-    .feature:nth-child(2) img {
-        margin-bottom: 20px; /* Add some spacing between image and text */
-    }
+            .feature:nth-child(2) img {
+                margin-bottom: 20px; /* Add some spacing between image and text */
+            }
 
-    .feature:nth-child(2) .feature-content {
-        max-width: 50%; /* Adjust width of feature content to match other sections */
-        margin: 0 auto; /* Center-align content */
-    }
-}
-
+            .feature:nth-child(2) .feature-content {
+                max-width: 50%; /* Adjust width of feature content to match other sections */
+                margin: 0 auto; /* Center-align content */
+            }
+        }
 
         #popup-waitlist textarea {
             height: calc(11em);
@@ -369,33 +369,34 @@
             font-size: 1.5em;
             color: var(--white);
         }
+
         @media only screen and (max-width: 700px) {
-    .intro {
-        flex-direction: column; /* Change flex direction to column for smaller screens */
-        align-items: center; /* Center-align content */
-    }
+            .intro {
+                flex-direction: column; /* Change flex direction to column for smaller screens */
+                align-items: center; /* Center-align content */
+            }
 
-    .intro-text {
-        width: 90%; /* Adjust width of text content */
-        margin-bottom: 20px; /* Add some spacing between text and image */
-    }
+            .intro-text {
+                width: 90%; /* Adjust width of text content */
+                margin-bottom: 20px; /* Add some spacing between text and image */
+            }
 
-    .intro-image {
-        width: 90%; /* Adjust width of image */
-    }
-}
-hr{
-    margin-left: 5%;
-    margin-right: 5%;
-}
+            .intro-image {
+                width: 90%; /* Adjust width of image */
+            }
+        }
 
-
+        hr {
+            margin-left: 5%;
+            margin-right: 5%;
+        }
     </style>
 </head>
 <body>
     <header>
         <a href="index.html">
-            <h1>KETCHUP</h1></a> 
+            <h1>KETCHUP</h1>
+        </a> 
     
         <nav>
             <div class="menu-stack">
@@ -422,14 +423,58 @@ hr{
                     Ketchup is more than just a food app; it's a culinary companion designed to help you discover, share, and organize your favorite recipes and restaurants to make deciding where to eat exciting.
                 </p>
                 <p>
-                    Join the waitlist for Ketchup!
+                    <button id="waitlistBtn">Join the Waitlist!</button>
                 </p>
-               
             </div>
-            
         </div>
     </main>
+    <div id="popup-waitlist">
+        <span class="popup-close" id="popupClose">&times;</span>
+        <h2>Join the Waitlist</h2>
+        <form id="waitlist-form" action="https://sheetdb.io/api/v1/wezxb7jomtmu6" method="POST">
+            <input type="text" name="data[name]" placeholder="Name" required>
+            <input type="email" name="data[email]" placeholder="Email" required>
+            <textarea name="data[message]" placeholder="Message" required></textarea>
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+    <br>
+    <br>
     <footer>
         <p>&copy; 2024 Let's Ketchup LLC. All rights reserved.</p>
     </footer>
-    
+    <script>
+        const waitlistBtn = document.getElementById('waitlistBtn');
+        const popupWaitlist = document.getElementById('popup-waitlist');
+        const popupClose = document.getElementById('popupClose');
+
+        waitlistBtn.addEventListener('click', function() {
+            popupWaitlist.classList.add('active');
+        });
+
+        popupClose.addEventListener('click', function() {
+            popupWaitlist.classList.remove('active');
+        });
+
+        const waitlistForm = document.getElementById('waitlist-form');
+        waitlistForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            fetch(waitlistForm.action, {
+                method: 'POST',
+                body: new FormData(waitlistForm)
+            })
+            .then(response => response.json())
+            .then(data => {
+                alert('Thank you for joining the waitlist!');
+                popupWaitlist.classList.remove('active');
+                waitlistForm.reset();
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('There was an error submitting the form. Please try again.');
+            });
+        });
+    </script>
+</body>
+</html>

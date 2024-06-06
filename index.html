@@ -41,11 +41,9 @@
             margin: 0;
             padding: 20px 0;
             text-decoration: none;
-            
         }
-        header a{
+        header a {
             text-decoration: none;
-
         }
         nav {
             margin-top: 10px;
@@ -181,7 +179,6 @@
             font-size: 1.5em; /* Relative size */
             font-family: "museo-sans-rounded", sans-serif;
             font-weight: 800;
-
         }
 
         .feature p {
@@ -190,7 +187,6 @@
             line-height: 1.5;
             padding: 2%;
             font-weight: 500;
-
         }
 
         .feature-content {
@@ -198,7 +194,7 @@
         }
 
         footer {
-            background-color: var(--red-primary) ;
+            background-color: var(--red-primary);
             color: var(--white); /* Light grey background */
             padding: 20px 0;
             text-align: center;
@@ -273,7 +269,7 @@
                 display: none; /* Hide menu button for wider screens */
             }
         }
-        .menu-content a:hover{
+        .menu-content a:hover {
             background-color: var(--red-primary);
             color: var(--white);
         }
@@ -317,21 +313,6 @@
             font-weight: 400;
             font-size: 1em;
         }
-        @media only screen and (max-width: 700px) {
-    .feature:nth-child(2) { /* Targeting the second feature section, which is the "Share" section */
-        flex-direction: column; /* Change flex direction to column for smaller screens */
-    }
-
-    .feature:nth-child(2) img {
-        margin-bottom: 20px; /* Add some spacing between image and text */
-    }
-
-    .feature:nth-child(2) .feature-content {
-        max-width: 50%; /* Adjust width of feature content to match other sections */
-        margin: 0 auto; /* Center-align content */
-    }
-}
-
 
         #popup-waitlist textarea {
             height: calc(11em);
@@ -366,31 +347,34 @@
             font-size: 1.5em;
             color: var(--white);
         }
+
         @media only screen and (max-width: 700px) {
-    .intro {
-        flex-direction: column; /* Change flex direction to column for smaller screens */
-        align-items: center; /* Center-align content */
-    }
+            .intro {
+                flex-direction: column; /* Change flex direction to column for smaller screens */
+                align-items: center; /* Center-align content */
+            }
 
-    .intro-text {
-        width: 90%; /* Adjust width of text content */
-        margin-bottom: 20px; /* Add some spacing between text and image */
-    }
+            .intro-text {
+                width: 90%; /* Adjust width of text content */
+                margin-bottom: 20px; /* Add some spacing between text and image */
+            }
 
-    .intro-image {
-        width: 90%; /* Adjust width of image */
-    }
-}
-hr{
-    margin-left: 5%;
-    margin-right: 5%;
-}
+            .intro-image {
+                width: 90%; /* Adjust width of image */
+            }
+        }
+
+        hr {
+            margin-left: 5%;
+            margin-right: 5%;
+        }
     </style>
 </head>
 <body>
     <header>
-       <a href="index.html">
-        <h1>KETCHUP</h1></a> 
+        <a href="index.html">
+            <h1>KETCHUP</h1>
+        </a> 
         <nav>
             <div class="menu-stack">
                 <button class="menu-btn">Menu &#9776;</button>
@@ -398,11 +382,13 @@ hr{
                     <a href="index.html">Home</a>
                     <a href="team.html">Meet the Team</a>
                     <a href="about.html">About</a>
+
                 </div>
             </div>
-            <a href="index.html">Home </a>
+            <a href="index.html">Home</a>
             <a href="team.html">Meet the Team</a>
             <a href="about.html">About</a>
+
         </nav>
     </header>
     <main>
@@ -416,7 +402,6 @@ hr{
             <div class="intro-image">
                 <img src="img/photo1.jpeg" alt="App Screenshot">
             </div>
-    
         </section>
         <hr>
         <section class="welcome">
@@ -427,7 +412,8 @@ hr{
                     <div class="feature-content">
                         <h3>Discover</h3>
                         <p>
-                            Discover new restaurants around you with recommendations from friends, making it easier than ever to find exciting dining spots in your area.                 </p>
+                            Discover new restaurants around you with recommendations from friends, making it easier than ever to find exciting dining spots in your area.
+                        </p>
                     </div>
                 </div>
                 <div class="feature">
@@ -436,7 +422,6 @@ hr{
                         <h3>Share</h3>
                         <p>
                             Share your favorite dining spots with friends and people nearby, making it easy for everyone to discover new places to eat together. Let's explore together!
-
                         </p>
                     </div>
                 </div>
@@ -445,7 +430,8 @@ hr{
                     <div class="feature-content">
                         <h3>Organize</h3>
                         <p>
-                            Easily organize your favorite restaurants and recipes in one convenient place, simplifying meal planning and dining out decisions.                        </p>
+                            Easily organize your favorite restaurants and recipes in one convenient place, simplifying meal planning and dining out decisions.
+                        </p>
                     </div>
                 </div>
             </div>
@@ -458,40 +444,57 @@ hr{
     <!-- Waitlist Popup -->
     <div class="popup" id="popup-waitlist">
         <span class="popup-close" id="popup-waitlist-close">&times;</span>
-        <h2>Join the Waitlist</h2>
-        <form id="contact-form-waitlist">
-            <input type="email" id="email-waitlist" name="email" placeholder="Your email" required>
-            <textarea id="message-waitlist" name="message" rows="6" placeholder="Your message" required>Hello Ketchup Team,
-            
-I am [Name], and I am interested in joining the waitlist for Ketchup!
-
-Looking forward to your response.
-
-Best regards,
-[Name]</textarea>
+        <h2>Join the Waitlist </h2>
+        <form id="waitlist-form" action="https://sheetdb.io/api/v1/wezxb7jomtmu6" method="POST">
+            <input type="text" name="data[name]" placeholder="Name" required>
+            <input type="email" name="data[email]" placeholder="Email" required>
+            <textarea name="data[message]" placeholder="Message" required></textarea>
             <button type="submit">Send</button>
         </form>
     </div>
+
+
+
+    <script>
+        const waitlistButton = document.getElementById('waitlist-button');
+        const popupWaitlist = document.getElementById('popup-waitlist');
+        const popupWaitlistClose = document.getElementById('popup-waitlist-close');
+
+        waitlistButton.addEventListener('click', () => {
+            popupWaitlist.classList.add('active');
+        });
+
+        popupWaitlistClose.addEventListener('click', () => {
+            popupWaitlist.classList.remove('active');
+        });
+
+        // Close popup when clicking outside the popup
+        window.addEventListener('click', (e) => {
+            if (e.target === popupWaitlist) {
+                popupWaitlist.classList.remove('active');
+            }
+        });
+
+        // Handle form submission to SheetDB
+        const waitlistForm = document.getElementById('waitlist-form');
+        waitlistForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            fetch(waitlistForm.action, {
+                method: 'POST',
+                body: new FormData(waitlistForm)
+            })
+            .then(response => response.json())
+            .then(data => {
+                alert('Thank you for joining the waitlist!');
+                popupWaitlist.classList.remove('active');
+                waitlistForm.reset();
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('There was an error submitting the form. Please try again.');
+            });
+        });
+    </script>
 </body>
 </html>
-
-<script>
-    const waitlistButton = document.getElementById('waitlist-button');
-    const popupWaitlist = document.getElementById('popup-waitlist');
-    const popupWaitlistClose = document.getElementById('popup-waitlist-close');
-
-    waitlistButton.addEventListener('click', () => {
-        popupWaitlist.classList.add('active');
-    });
-
-    popupWaitlistClose.addEventListener('click', () => {
-        popupWaitlist.classList.remove('active');
-    });
-
-    // Close popup when clicking outside the popup
-    window.addEventListener('click', (e) => {
-        if (e.target === popupWaitlist) {
-            popupWaitlist.classList.remove('active');
-        }
-    });
-</script>
