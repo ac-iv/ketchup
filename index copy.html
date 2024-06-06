@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ketchup - Join Our Network of Restaurants</title>
+    <title>Ketchup</title>
     <link href="https://fonts.googleapis.com/css2?family=Neue+Haas+Grotesk:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://use.typekit.net/zzo8ozp.css">
     <style>
@@ -385,67 +385,12 @@ hr{
     margin-left: 5%;
     margin-right: 5%;
 }
-#form-section {
-            background-color: var(--red-primary);
-            padding: 40px;
-            margin: 2%;
-            border-radius: 15px;
-            color: var(--white);
-            text-align: left;
-            text-align: center;
-        }
-        #form-section h2 {
-            font-family: "museo-sans-rounded", sans-serif;
-            font-weight: 1000;
-            font-size: 1.5em;
-            color: var(--white);
-            text-transform: lowercase;
-            margin-bottom: 20px;
-            text-align: center;
-        }
-        #form-section input,
-        #form-section textarea {
-            width: 90%;
-            padding: 10px;
-            margin: 10px 0;
-            border: 1px solid var(--grey-dark);
-            border-radius: 5px;
-            font-family: "museo-sans-rounded", sans-serif;
-            font-weight: 400;
-            font-size: 1em;
-        }
-        #form-section textarea {
-            height: calc(11em);
-            padding: 10px;
-            resize: vertical;
-        }
-        #form-section button {
-            width: 92%;
-            padding: 10px;
-            margin-top: 10px;
-            background-color: var(--white);
-            color: var (--red-primary);
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-        #form-section button:hover {
-            background-color: var(--red-primary);
-            color: var(--white);
-            border: var(--white) 2px solid;
-        }
-        hr {
-            margin-left: 5%;
-            margin-right: 5%;
-        }
-
     </style>
 </head>
 <body>
     <header>
-        <a href="index.html">
-            <h1>KETCHUP</h1>
-        </a>
+       <a href="index.html">
+        <h1>KETCHUP</h1></a> 
         <nav>
             <div class="menu-stack">
                 <button class="menu-btn">Menu &#9776;</button>
@@ -455,52 +400,52 @@ hr{
                     <a href="about.html">About</a>
                 </div>
             </div>
-            <a href="index.html">Home</a>
+            <a href="index.html">Home </a>
             <a href="team.html">Meet the Team</a>
             <a href="about.html">About</a>
             <a href="join.html">Join our Network of Restaurants</a>
-
         </nav>
     </header>
     <main>
-        <section id="form-section">
-            <h2>Join Our Network of Restaurants</h2>
-            <form id="network-form" action="https://sheetdb.io/api/v1/ccmyn2f7giols" method="POST">
-                <input type="text" name="data[name]" placeholder="Name" required>
-                <input type="email" name="data[email]" placeholder="Email" required>
-                <textarea name="data[message]" placeholder="Message" required></textarea>
-                <button type="submit">Send</button>
-            </form>
+        <section class="intro">
+            <div class="intro-text">
+                <h2>Let's Ketchup!</h2>
+                <p><em>Discover</em>, <em>organize</em> and <em>share</em> restaurants and recipes <span style="color: var(--red-primary);"><em>with friends!</em></span></p>
+                <h6>Coming soon to the App Store!</h6>
+                <button id="waitlist-button"><h5>Join the Waitlist</h5></button>
+            </div>
+            <div class="intro-image">
+                <img src="img/photo1.jpeg" alt="App Screenshot">
+            </div>
         </section>
         <hr>
         <section class="welcome">
-            <h2>Why Join Ketchup?</h2>
+            <h2>Welcome to Ketchup!</h2>
             <div class="features">
                 <div class="feature">
                     <img src="img/photo5.jpeg" alt="Discover">
                     <div class="feature-content">
-                        <h3>Expand Your Reach</h3>
+                        <h3>Discover</h3>
                         <p>
-                            Get discovered by new customers with personalized recommendations from friends and food enthusiasts, making it easier than ever to attract diners to your restaurant.
-                        </p>
+                            Discover new restaurants around you with recommendations from friends, making it easier than ever to find exciting dining spots in your area.                 </p>
                     </div>
                 </div>
                 <div class="feature">
                     <img src="img/photo2.jpeg" alt="Share">
                     <div class="feature-content">
-                        <h3>Amplify Your Brand</h3>
+                        <h3>Share</h3>
                         <p>
-                            Leverage the power of word-of-mouth marketing by allowing your satisfied customers to share their dining experiences with friends and the community. Let's grow together!
+                            Share your favorite dining spots with friends and people nearby, making it easy for everyone to discover new places to eat together. Let's explore together!
+
                         </p>
                     </div>
                 </div>
                 <div class="feature">
                     <img src="img/photo7.jpeg" alt="Organize">
                     <div class="feature-content">
-                        <h3>Streamline Your Promotions</h3>
+                        <h3>Organize</h3>
                         <p>
-                            Effortlessly manage and organize your restaurant’s promotions and menu highlights in one convenient platform, making it simpler to plan and execute your marketing strategies.
-                        </p>
+                            Easily organize your favorite restaurants and recipes in one convenient place, simplifying meal planning and dining out decisions.                        </p>
                     </div>
                 </div>
             </div>
@@ -509,21 +454,52 @@ hr{
     <footer>
         <p>&copy; 2024 Let's Ketchup LLC. All rights reserved.</p>
     </footer>
+    
+    <div class="popup" id="popup-waitlist">
+        <span class="popup-close" id="popup-waitlist-close">&times;</span>
+        <h2>Join the Waitlist </h2>
+        <form id="waitlist-form" action="https://sheetdb.io/api/v1/otov7upgjwnn3" method="POST">
+            <input type="text" name="data[name]" placeholder="Name" required>
+            <input type="email" name="data[email]" placeholder="Email" required>
+            <textarea name="data[message]" placeholder="Message" required></textarea>
+            <button type="submit">Send</button>
+        </form>
+    </div>
 </body>
 <script>
+    const waitlistButton = document.getElementById('waitlist-button');
+    const popupWaitlist = document.getElementById('popup-waitlist');
+    const popupWaitlistClose = document.getElementById('popup-waitlist-close');
+
+    waitlistButton.addEventListener('click', () => {
+        popupWaitlist.classList.add('active');
+    });
+
+    popupWaitlistClose.addEventListener('click', () => {
+        popupWaitlist.classList.remove('active');
+    });
+
+    // Close popup when clicking outside the popup
+    window.addEventListener('click', (e) => {
+        if (e.target === popupWaitlist) {
+            popupWaitlist.classList.remove('active');
+        }
+    });
+
     // Handle form submission to SheetDB
-    const networkForm = document.getElementById('network-form');
-    networkForm.addEventListener('submit', function(e) {
+    const waitlistForm = document.getElementById('waitlist-form');
+    waitlistForm.addEventListener('submit', function(e) {
         e.preventDefault();
 
-        fetch(networkForm.action, {
+        fetch(waitlistForm.action, {
             method: 'POST',
-            body: new FormData(networkForm)
+            body: new FormData(waitlistForm)
         })
         .then(response => response.json())
         .then(data => {
-            alert('Thank you for joining our network!');
-            networkForm.reset();
+            alert('Thank you for joining the waitlist!');
+            popupWaitlist.classList.remove('active');
+            waitlistForm.reset();
         })
         .catch(error => {
             console.error('Error:', error);
@@ -532,3 +508,5 @@ hr{
     });
 </script>
 </html>
+
+
