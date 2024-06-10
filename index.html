@@ -317,21 +317,36 @@
             font-weight: 400;
             font-size: 1em;
         }
+        
         @media only screen and (max-width: 700px) {
-    .feature:nth-child(2) { /* Targeting the second feature section, which is the "Share" section */
-        flex-direction: column; /* Change flex direction to column for smaller screens */
-    }
+            .feature:nth-child(2) { /* Targeting the second feature section, which is the "Share" section */
+                flex-direction: column; /* Change flex direction to column for smaller screens */
+            }
 
-    .feature:nth-child(2) img {
-        margin-bottom: 20px; /* Add some spacing between image and text */
-    }
+            .feature:nth-child(2) img {
+                margin-bottom: 20px; /* Add some spacing between image and text */
+            }
 
-    .feature:nth-child(2) .feature-content {
-        max-width: 50%; /* Adjust width of feature content to match other sections */
-        margin: 0 auto; /* Center-align content */
-    }
-}
+            .feature:nth-child(2) .feature-content {
+                max-width: 50%; /* Adjust width of feature content to match other sections */
+                margin: 0 auto; /* Center-align content */
+            }
+        }
 
+        @media only screen and (max-width: 700px) {
+            .feature:nth-child(4) { /* Targeting the fourth feature section, which is the "Organize" section */
+                flex-direction: column; /* Change flex direction to column for smaller screens */
+            }
+
+            .feature:nth-child(4) img {
+                margin-bottom: 20px; /* Add some spacing between image and text */
+            }
+
+            .feature:nth-child(4) .feature-content {
+                max-width: 100%; /* Adjust width of feature content */
+                margin: 0 auto; /* Center-align content */
+            }
+        }
 
         #popup-waitlist textarea {
             height: calc(11em);
@@ -367,24 +382,25 @@
             color: var(--white);
         }
         @media only screen and (max-width: 700px) {
-    .intro {
-        flex-direction: column; /* Change flex direction to column for smaller screens */
-        align-items: center; /* Center-align content */
-    }
+            .intro {
+                flex-direction: column; /* Change flex direction to column for smaller screens */
+                align-items: center; /* Center-align content */
+            }
 
-    .intro-text {
-        width: 90%; /* Adjust width of text content */
-        margin-bottom: 20px; /* Add some spacing between text and image */
-    }
+            .intro-text {
+                width: 90%; /* Adjust width of text content */
+                margin-bottom: 20px; /* Add some spacing between text and image */
+            }
 
-    .intro-image {
-        width: 90%; /* Adjust width of image */
-    }
-}
-hr{
-    margin-left: 5%;
-    margin-right: 5%;
-}
+            .intro-image {
+                width: 90%; /* Adjust width of image */
+            }
+        }
+
+        hr{
+            margin-left: 5%;
+            margin-right: 5%;
+        }
     </style>
 </head>
 <body>
@@ -437,6 +453,15 @@ hr{
                             Share your favorite dining spots with friends and people nearby, making it easy for everyone to discover new places to eat together. Let's explore together!
 
                         </p>
+                    </div>
+                </div>
+                
+                <div class="feature">
+                    <img src="img/recepie.jpeg" alt="Share">
+                    <div class="feature-content">
+                        <h3>Create</h3>
+                        <p>
+                            Create original culinary content to share with friends and fellow foodies, making it easy for everyone to explore new flavors and dishes together.                     </p>
                     </div>
                 </div>
                 <div class="feature">
@@ -507,5 +532,3 @@ hr{
     });
 </script>
 </html>
-
-
